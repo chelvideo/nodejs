@@ -9,8 +9,10 @@ router.route('/').get(async (req, res) => {
 });
 
 // GET /users/:id - get the user by id (ex. “/users/123”) (remove password from response)
-router.route('/*').get(async (req, res) => {
-  const user = await usersService.getUser(req.path.slice(1));
+router.route('/:id').get(async (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+  const user = await usersService.getUser(id);
   if (user) res.json(User.toResponse(user));
   else res.status(404).json({ error: 'User not found' });
   // res.json(User.toResponse());
@@ -24,15 +26,16 @@ router.route('/*').post(async (req, res) => {
 });
 
 // PUT /users/:id - update user
-router.route('/*').put(async (req, res) => {
-  const user = await usersService.modifyUser(req.path.slice(1), req.body);
+router.route('/:id').put(async (req, res) => {
+  const { id } = req.params;
+  const user = await usersService.modifyUser(id, req.body);
   res.json(User.toResponse(user));
 });
 
 // DELETE /users/:id - delete user
-router.route('/*').delete(async (req, res) => {
-  const userId = req.path.slice(1);
-  res.status(204).json(usersService.deleteUser(userId));
+router.route('/:id').delete(async (req, res) => {
+  const { id } = req.params;
+  res.status(204).json(usersService.deleteUser(id));
 });
 
 module.exports = router;
