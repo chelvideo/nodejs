@@ -39,6 +39,7 @@ const modifyBoard = async (id, newBoardData) => {
 const deleteBoard = async id => {
   const index = dbBoards.findIndex(item => item.id === id);
   dbBoards.splice(index, 1);
+  return dbBoards;
 };
 
 module.exports = { getAll, createBoard, getBoard, modifyBoard, deleteBoard };

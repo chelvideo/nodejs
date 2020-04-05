@@ -1,4 +1,4 @@
-const dbTasks = [
+let dbTasks = [
   {
     id: 'test',
     title: 'task',
@@ -55,11 +55,16 @@ const deleteUserFromTasks = async id => {
   });
 };
 
+const deleteTasksFromBoard = async id => {
+  dbTasks = dbTasks.filter(item => item.boardId !== id);
+};
+
 module.exports = {
   getAll,
   createTask,
   getTask,
   modifyTask,
   deleteTask,
-  deleteUserFromTasks
+  deleteUserFromTasks,
+  deleteTasksFromBoard
 };

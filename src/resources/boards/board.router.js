@@ -15,7 +15,7 @@ router.route('/:boardId').get(async (req, res) => {
   const board = await boardsService.getBoard(boardId);
   if (board) res.json(Board.toResponse(board));
   else res.status(404).json({ error: 'Board not found' });
-  res.json(Board.toResponse());
+  // res.json(Board.toResponse());
 });
 
 // POST /boards - create board

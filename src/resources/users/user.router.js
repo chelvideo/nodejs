@@ -11,11 +11,9 @@ router.route('/').get(async (req, res) => {
 // GET /users/:id - get the user by id (ex. “/users/123”) (remove password from response)
 router.route('/:id').get(async (req, res) => {
   const { id } = req.params;
-  console.log(id);
   const user = await usersService.getUser(id);
   if (user) res.json(User.toResponse(user));
   else res.status(404).json({ error: 'User not found' });
-  // res.json(User.toResponse());
 });
 
 // POST /users - create user
