@@ -1,0 +1,4 @@
+diff a/src/resources/boards/board.service.js b/src/resources/boards/board.service.js	(rejected hunks)
+@@ -12 +12 @@ const deleteBoard = id => {
+-}
++};

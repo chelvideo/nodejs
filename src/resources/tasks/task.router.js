@@ -9,7 +9,6 @@ router.route('/:boardId/tasks').get(async (req, res) => {
   // res.json(tasks.map(item => Task.toResponse(tasks)));
   res.json(tasks);
 });
-
 // GET /boards/:boardId/tasks/:taskId - get task by id on board with boardId
 router.route('/:boardId/tasks/:taskId').get(async (req, res) => {
   const boardId = req.params.boardId;
