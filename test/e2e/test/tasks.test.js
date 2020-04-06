@@ -44,13 +44,13 @@ describe('Tasks suite', () => {
       .send(TEST_TASK_DATA)
       .then(res => (testTaskId = res.body.id));
   });
-  /*
+
   afterAll(async () => {
     await request
       .delete(routes.boards.delete(testBoardId))
       .then(res => expect(res.status).oneOf([200, 204]));
   });
-*/
+
   describe('GET', () => {
     it('should get all tasks', async () => {
       await request
