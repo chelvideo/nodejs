@@ -33,7 +33,6 @@
       "./test/setup.js"
     ]
   },
- 
   "dependencies": {
     "commander": "^5.0.0",
     "cross-env": "6.0.3",
@@ -41,6 +40,7 @@
     "express": "4.17.1",
     "http-errors": "^1.7.3",
     "inquirer": "^7.1.0",
+    "mongoose": "^5.9.9",
     "on-finished": "^2.3.0",
     "swagger-ui-express": "4.1.2",
     "uuid": "3.3.3",
