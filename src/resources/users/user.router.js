@@ -6,7 +6,6 @@ const createError = require('http-errors');
 // GET /users - get all users (remove password from response)
 router.route('/').get(async (req, res, next) => {
   try {
-    //throw new Error();
     const users = await usersService.getAll();
     res.status(200).json(users.map(item => User.toResponse(item)));
   } catch (err) {
@@ -52,7 +51,9 @@ router.route('/:id').put(async (req, res, next) => {
 router.route('/:id').delete(async (req, res, next) => {
   try {
     const { id } = req.params;
-    res.status(204).json(usersService.deleteUser(id));
+    const isDelete = await usersService.deleteUser(id);
+    if (!isDelete) throw new createError(404, 'User not found');
+    res.status(204).json('User is deleted');
   } catch (err) {
     next(err);
   }

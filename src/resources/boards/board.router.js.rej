@@ -1,4 +1,0 @@
-diff a/src/resources/boards/board.router.js b/src/resources/boards/board.router.js	(rejected hunks)
-@@ -18 +18 @@ router.route('/:boardId').get(async (req, res) => {
--  //res.json(Board.toResponse());
-+  // res.json(Board.toResponse());

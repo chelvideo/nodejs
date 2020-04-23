@@ -1,40 +1,23 @@
-const db = [
-  {
-    id: 'test',
-    name: 'mytest',
-    login: 'mytest',
-    password: 'mytest'
-  }
-];
+const User = require('./user.model');
 
 const getAll = async () => {
-  throw new Error();
-  //return db;
+  return User.find({});
 };
 
 const createUser = async data => {
-  throw new Error();
-  //db.push(data);
+  return User.create(data);
 };
 
 const getUser = async id => {
-  throw new Error();
-  //return db.find(item => item.id === id);
+  return await User.findOne({ _id: id});
 };
 
 const modifyUser = async (id, newUserData) => {
-  throw new Error();
-  // const user = await getUser(id);
-  // user.name = newUserData.name;
-  // user.login = newUserData.login;
-  // user.password = newUserData.password;
-  // return user;
+  return User.updateOne({_id: id}, newUserData);
 };
 
 const deleteUser = async id => {
-  throw new Error();
-  //const index = db.findIndex(item => item.id === id);
-  //db.splice(index, 1);
+  return User.deleteOne({ _id: id});
 };
 
 module.exports = { getAll, createUser, getUser, modifyUser, deleteUser };

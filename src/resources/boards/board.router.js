@@ -42,7 +42,7 @@ router.route('/:boardId').put(async (req, res, next) => {
   try {
     const { boardId } = req.params;
     const board = await boardsService.modifyBoard(boardId, req.body);
-    res.status(200).json(Board.toResponse(board));
+    res.status(200).json((board));
   } catch (err) {
       next(err);
   }

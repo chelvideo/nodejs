@@ -1,4 +1,0 @@
-diff a/src/resources/tasks/task.memory.repository.js b/src/resources/tasks/task.memory.repository.js	(rejected hunks)
-@@ -59 +59 @@ const deleteTasksFromBoard = async id => {
--  dbTasks=dbTasks.filter(item => item.boardId !== id);
-+  dbTasks = dbTasks.filter(item => item.boardId !== id);
