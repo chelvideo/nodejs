@@ -8,9 +8,7 @@ const createUser = async data => {
   return User.create(data);
 };
 
-const getUser = async id => {
-  return await User.findOne({ _id: id});
-};
+const getUser = async id => await User.findOne({ _id: id });
 
 const modifyUser = async (id, newUserData) => {
   return User.updateOne({_id: id}, newUserData);

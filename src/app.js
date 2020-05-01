@@ -6,13 +6,15 @@ const userRouter = require('./resources/users/user.router');
 const boardRouter = require('./resources/boards/board.router');
 const { reqLogger } = require('./common/logHandler');
 const errHandler = require('./common/errHandler');
+const loginRouter = require('./resources/login/login.router');
+const { checkToken } = require('./common/auth.controller');
 
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
 
 app.use(express.json());
 
-app.use(reqLogger);
+//app.use(reqLogger);
 
 app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
@@ -24,9 +26,10 @@ app.use('/', (req, res, next) => {
   next();
 });
 
-app.use('/users', userRouter);
-app.use('/boards', boardRouter);
+app.use('/login', loginRouter);
+app.use('/users', checkToken, userRouter);
+app.use('/boards', checkToken, boardRouter);
 
-app.use(errHandler);
+//app.use(errHandler);
 
 module.exports = app;

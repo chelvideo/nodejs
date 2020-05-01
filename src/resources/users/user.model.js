@@ -1,7 +1,7 @@
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const uuid = require('uuid');
 
-var userSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     name: String,
     login: String,
@@ -11,14 +11,13 @@ var userSchema = new mongoose.Schema(
       default: uuid
     }
   },
-  { versionKey: false}
+  { versionKey: false }
 );
 
-userSchema.statics.toResponse= user => {
+userSchema.statics.toResponse = user => {
   const { id, name, login } = user;
   return { id, name, login };
-}
+};
 
 const User = mongoose.model('User', userSchema);
-
 module.exports = User;
